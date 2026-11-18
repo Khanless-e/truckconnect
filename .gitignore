@@ -1,0 +1,9 @@
+# Separate git repositories
+client/
+server/mytelegram-src/
+
+# Local server state and secrets
+server/data/
+server/.env
+
+.DS_Store

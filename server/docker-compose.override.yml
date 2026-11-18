@@ -1,0 +1,12 @@
+# The published open-source `messenger-query-server` image crashes on startup:
+# it registers older-layer (`LayerN`) handlers whose converters only ship in the Pro edition.
+# The published `messenger-command-server` image answers `auth.sendCode` with "Unsupported request".
+# Both images are built from `mytelegram-src` with those handlers removed (current layer 232 only):
+#   cd mytelegram-src/source
+#   docker build -f ../build/docker/Dockerfile-mytelegram-messenger-query-server -t tgclone/mytelegram-messenger-query-server:layer232 .
+#   docker build -f ../build/docker/Dockerfile-mytelegram-messenger-command-server -t tgclone/mytelegram-messenger-command-server:layer232 .
+services:
+  messenger-query-server:
+    image: tgclone/mytelegram-messenger-query-server:layer232
+  messenger-command-server:
+    image: tgclone/mytelegram-messenger-command-server:layer232
